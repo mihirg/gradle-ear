@@ -1,0 +1,15 @@
+apply plugin: 'ear'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    deploy project(':testbeans')
+    deploy project(path: ':testapp', configuration: 'archives')
+}
+
+ext.libraries = [
+    javax_ejb            : "org.glassfish:javax.ejb:3.1.1"
+]

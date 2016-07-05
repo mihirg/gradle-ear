@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // providedCompile ensures that the ejb is packaged.
+    providedCompile(project(':testbeans'))
+    compile libraries.javax_ejb
+    providedCompile 'javax.servlet:servlet-api:2.5'
+}
