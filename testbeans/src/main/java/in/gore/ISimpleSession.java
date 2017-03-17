@@ -1,8 +1,14 @@
 package in.gore;
 
+import in.gore.entities.User;
+
 import javax.ejb.Local;
 
 @Local
 public interface ISimpleSession {
-    public String getMessage();
+    String getMessage();
+
+    long createUser();
+
+    User getUser();
 }

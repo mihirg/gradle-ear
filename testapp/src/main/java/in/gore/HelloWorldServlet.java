@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.gore.ISimpleSession;
+import in.gore.models.Customer;
+
 import javax.ejb.EJB;
+import javax.inject.Inject;
 
 public class HelloWorldServlet extends HttpServlet {
 
@@ -17,9 +20,19 @@ public class HelloWorldServlet extends HttpServlet {
     @EJB
     private ISimpleSession session;
 
+    @Inject Customer customer;
+
+    @Inject Test test;
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        resp.getOutputStream().write(session.getMessage().getBytes());
+        if (test != null) {
+            resp.getOutputStream().write(session.getMessage().getBytes());
+        } else {
+            resp.getOutputStream().write("Customer not set".getBytes());
+        }
+
     }
 }
