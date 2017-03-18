@@ -11,4 +11,5 @@ dependencies {
     providedCompile(project(':testbeans'))
     compile libraries.javax_ejb
     providedCompile 'javax.servlet:servlet-api:2.5'
+    providedCompile group: 'javax', name: 'javaee-api', version: '7.0'
 }

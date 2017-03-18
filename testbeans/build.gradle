@@ -8,4 +8,9 @@ repositories {
 
 dependencies {
     compile libraries.javax_ejb
+    //providedCompile libraries.javax_inject
+    compile group: 'javax', name: 'javaee-api', version: '7.0'
+    compile 'org.hibernate:hibernate-entitymanager:5.2.3.Final'
+    compile group: 'org.jboss.logging', name: 'jboss-logging', version: '3.2.0.Final'
+
 }

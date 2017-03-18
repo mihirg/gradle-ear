@@ -8,8 +8,14 @@ repositories {
 dependencies {
     deploy project(':testbeans')
     deploy project(path: ':testapp', configuration: 'archives')
+    earlib 'org.hibernate:hibernate-entitymanager:5.2.3.Final'
+    earlib group: 'org.jboss.logging', name: 'jboss-logging', version: '3.3.0.Final'
+    //earlib 'org.apache.derby:derbyclient:10.9.1.0'
+
+
 }
 
 ext.libraries = [
-    javax_ejb            : "org.glassfish:javax.ejb:3.1.1"
+    javax_ejb            : "org.glassfish:javax.ejb:3.1.1",
+    javax_inject         : "javax.inject:javax.inject:1"
 ]
