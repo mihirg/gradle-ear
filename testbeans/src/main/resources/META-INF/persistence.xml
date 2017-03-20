@@ -5,7 +5,9 @@
 
     <persistence-unit name="myPersistenceUnit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:app/jdbc/demodb</jta-data-source>
+        <!--<jta-data-source>java:app/jdbc/demodb</jta-data-source>-->
+        <jta-data-source>jdbc/__default</jta-data-source>
+
         <class>in.gore.entities.User</class>
 
         <properties>

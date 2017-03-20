@@ -8,7 +8,8 @@ repositories {
 dependencies {
     deploy project(':testbeans')
     deploy project(path: ':testapp', configuration: 'archives')
-    earlib 'org.hibernate:hibernate-entitymanager:5.2.3.Final'
+    earlib 'org.hibernate:hibernate-entitymanager:4.1.2.Final'
+    //earlib group: 'org.hibernate', name: 'hibernate', version: '3.2.6.ga'
     earlib group: 'org.jboss.logging', name: 'jboss-logging', version: '3.3.0.Final'
     //earlib 'org.apache.derby:derbyclient:10.9.1.0'
 

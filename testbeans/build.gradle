@@ -4,7 +4,20 @@ apply plugin: 'java'
 
 repositories {
     mavenCentral()
+    jcenter()
+    maven { url 'http://repository.jboss.org/nexus/content/groups/public' }
+    maven { url 'http://repository.jboss.org/nexus/content/repositories/deprecated' }
+    maven { url 'http://repo.jfrog.org/artifactory/repo' }
 }
+
+ext.libraryVersions = [
+        javaee                  : '7.0',
+        wildfly                 : '1.1.0.Alpha1',
+        junit                   : '4.12',
+        arquillian              : '1.1.10.Final',
+        shrinkWrapResolverGradle: '2.2.0'
+]
+
 
 dependencies {
     compile libraries.javax_ejb
@@ -13,4 +26,27 @@ dependencies {
     compile 'org.hibernate:hibernate-entitymanager:5.2.3.Final'
     compile group: 'org.jboss.logging', name: 'jboss-logging', version: '3.2.0.Final'
 
+
+    testCompile "junit:junit:${libraryVersions.junit}"
+    testCompile "org.jboss.arquillian.junit:arquillian-junit-container:${libraryVersions.arquillian}"
+    testCompile "org.jboss.arquillian.protocol:arquillian-protocol-servlet:${libraryVersions.arquillian}"
+    //testCompile "org.wildfly.arquillian:wildfly-arquillian-container-managed:${libraryVersions.wildfly}"
+    testCompile "org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-gradle-depchain:${libraryVersions.shrinkWrapResolverGradle}"
+
+    //testRuntime 'org.wildfly:wildfly-arquillian-container-embedded:8.0.0.Final'
+
+    testRuntime 'org.jboss.arquillian.container:arquillian-glassfish-embedded-3.1:1.0.0.CR4'
+    testRuntime 'org.glassfish.main.extras:glassfish-embedded-all:4.1.1'
+
+}
+
+test {
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        exceptionFormat = 'full'
+    }
+}
+
+configurations {
+    all*.exclude group: 'org.glassfish.hk2.external', module: 'bean-validator'
 }

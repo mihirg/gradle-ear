@@ -2,6 +2,7 @@ package in.gore;
 
 import in.gore.entities.User;
 
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
 @Stateless
+//@Local({ISimpleSession.class})
 public class SimpleSessionBean implements ISimpleSession {
 
     @PersistenceContext(unitName = "myPersistenceUnit")
